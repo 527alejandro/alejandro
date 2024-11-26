@@ -144,6 +144,27 @@ export interface TDeferBlockDetails {
    * List of prefetch triggers for a given block
    */
   prefetchTriggers: Set<DeferBlockTrigger> | null;
+
+  /**
+   * Defer block flags, which should be used for all
+   * instances of a given defer block (the flags that should be
+   * placed into the `TDeferDetails` at runtime).
+   */
+  flags: TDeferDetailsFlags;
+}
+
+/**
+ * Specifies defer block flags, which should be used for all
+ * instances of a given defer block (the flags that should be
+ * placed into the `TDeferDetails` at runtime).
+ */
+export const enum TDeferDetailsFlags {
+  Default = 0,
+
+  /**
+   * Whether or not the defer block has hydrate triggers.
+   */
+  HasHydrateTriggers = 1 << 0,
 }
 
 /**
